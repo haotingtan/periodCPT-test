@@ -20,10 +20,12 @@ install the existing (Bayesian) periodic code from https://github.com/taylors2/P
 if (!requireNamespace("devtools", quietly = TRUE)) install.packages("devtools")
 
 # set GITHUB_PAT to access github packages
-Sys.setenv(GITHUB_PAT = "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")
-
-# Install PeriodCPT from GitHub
-devtools::install_github("taylors2/PeriodCPT")
+if (!requireNamespace("PeriodCPT", quietly = TRUE)){
+  Sys.setenv(GITHUB_PAT = "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")
+  
+  # Install PeriodCPT from GitHub
+  devtools::install_github("taylors2/PeriodCPT")
+}
 
 # Load the PeriodCPT package
 library(PeriodCPT)
@@ -43,4 +45,4 @@ PeriodCPT(binary_data, distribution = "bern", niter = 1e3)
 
 ## Summary
 
-- The summary indicates that the binary data exhibits periodic behavior with significant variations in patterns across different segments within the specified period length. Specifically, it identifies three distinct segments within each period, where the likelihood of observing a 1 changes markedly. This could imply that the process generating the data has different states or behaviors that switch at specific points in time, and these changes are periodic, repeating every 12 observations.
+- The summary indicates that the binary data exhibits periodic behavior with significant variations in patterns across different segments within the specified period length. Specifically, it identifies three distinct segments within each period.
