@@ -1,0 +1,46 @@
+---
+title: "GSoC: Periodic Time Changepoint Detection Easy Test"
+output: pdf_document
+date: "2024-04-01"
+author: "Haoting Tan"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Easy Test
+
+## Goal:
+install the existing (Bayesian) periodic code from https://github.com/taylors2/PeriodCPT and run it on some binary data. Create fully reproducible code in Rmarkdown.
+
+## Install Necessary Packages
+```{r}
+# Install devtools if not already installed
+if (!requireNamespace("devtools", quietly = TRUE)) install.packages("devtools")
+
+# set GITHUB_PAT to access github packages
+Sys.setenv(GITHUB_PAT = "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")
+
+# Install PeriodCPT from GitHub
+devtools::install_github("taylors2/PeriodCPT")
+
+# Load the PeriodCPT package
+library(PeriodCPT)
+
+```
+
+## Generate Binary Data 
+```{r}
+set.seed(217) # For reproducibility
+binary_data = ts( rbinom(90, size = 1, prob = rep(c(0.2, 0.8), each=6)), freq = 12)
+```
+
+## Run PeriodCPT on the binary_data
+```{r}
+PeriodCPT(binary_data, distribution = "bern", niter = 1e3)
+```
+
+## Summary
+
+- The summary indicates that the binary data exhibits periodic behavior with significant variations in patterns across different segments within the specified period length. Specifically, it identifies three distinct segments within each period, where the likelihood of observing a 1 changes markedly. This could imply that the process generating the data has different states or behaviors that switch at specific points in time, and these changes are periodic, repeating every 12 observations.
