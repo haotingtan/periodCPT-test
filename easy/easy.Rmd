@@ -40,9 +40,16 @@ binary_data = ts( rbinom(90, size = 1, prob = rep(c(0.2, 0.8), each=6)), freq = 
 
 ## Run PeriodCPT on the binary_data
 ```{r}
+# Bernoulli distribution
 PeriodCPT(binary_data, distribution = "bern", niter = 1e3)
+
+# poisson distribution 
+PeriodCPT(binary_data, distribution = "pois", niter = 1e3)
+
+# normal distribution
+PeriodCPT(binary_data, distribution = "norm", niter = 1e3)
 ```
 
 ## Summary
 
-- The summary indicates that the binary data exhibits periodic behavior with significant variations in patterns across different segments within the specified period length. Specifically, it identifies three distinct segments within each period.
+- The summaries you've provided show the results of running the PeriodCPT algorithm on the same binary data with three different assumed data distributions: Bernoulli (bern), Poisson (pois), and Normal (norm). These summaries give insight into how the choice of distribution affects the detected changepoints, the estimated segment parameters, and the interpretation of the underlying data structure. 
