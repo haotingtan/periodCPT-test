@@ -1,8 +1,9 @@
-# Hard Test
+# Hard Test (Not finished)
 
 ## Step 1
 
 -   implementing cost function into the cost_general_functions.c in changepoint package on CRAN [<https://github.com/rkillick/changepoint/blob/main/src/cost_general_functions.c>]
+-   Below I am doing general log-likelihood, Doesn't get a solid understaning on the binary cost from periodCPT yet [https://github.com/taylors2/PeriodCPT/blob/master/src/PeriodCPT.c]. Will do later
 
 ``` c
 #include <float.h> // For DBL_MIN to avoid log(0)
